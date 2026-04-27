@@ -14,6 +14,6 @@ int main(){
         push_back(&v, x);
     }
 
-    mostra(&v); 
+    mostra(&v);
 }
 
