@@ -2,18 +2,26 @@
 #include <stdlib.h>
 #include "func.c"
 
+const int MAXN = 100;
+
 int main(){
 
-    List v;
-
-    init(&v);
+    List adj[MAXN];
 
     int n; scanf("%d", &n);
+    for(int i = 0; i < n; i++) init(&adj[i]);
     for(int i = 0; i < n; i++){
-        int x; scanf("%d", &x);
-        push_back(&v, x);
+        int x, y; scanf("%d%d", &x, &y);
+        x--, y--;
+        push_back(&adj[x], y);
+        push_back(&adj[y], x);
     }
 
-    mostra(&v); 
+    printf("****\n");
+
+    for(int i = 0; i < n; i++){
+        printf("%d: ", i);
+        mostra(&adj[i]); 
+    }
 }
 
