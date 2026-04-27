@@ -58,3 +58,16 @@ void free_list(List *l){
     l->size = 0;
 }
 
+void dfs(List *adj[], int vis[], int u){
+    vis[u] = 1;
+    if(adj[u] == NULL) return;
+    List *vizinhos = adj[u];
+    Node *cur = vizinhos->head;
+    while(cur != NULL){
+        if(!vis[cur->val]){
+            dfs(adj, vis, cur->val);
+        }
+
+        cur = cur->next;
+    }
+}
