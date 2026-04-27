@@ -16,4 +16,9 @@
     int get_size(List *l);
     void mostra(List *l);
     void free_list(List *l);
+
+    void graus(List *adj, int *menor, int *maior, int MAXN);
+    int* conexos(List *adj, int MAXN, int *cor);
+    void dfs(List *adj, int vis[], int u, int c);
+
 #endif //TEG_FUNC_H

@@ -58,16 +58,44 @@ void free_list(List *l){
     l->size = 0;
 }
 
-void dfs(List *adj[], int vis[], int u, int c){
+void dfs(List *adj, int vis[], int u, int c){
     vis[u] = c;
-    if(adj[u] == NULL) return;
-    List *vizinhos = adj[u];
-    Node *cur = vizinhos->head;
+    Node *cur = adj[u].head;
     while(cur != NULL){
         if(!vis[cur->val]){
             dfs(adj, vis, cur->val, c);
         }
-
         cur = cur->next;
+    }
+}
+
+int* conexos(List *adj, int MAXN, int *cor){
+    int c = 0;
+    int vis[MAXN];
+    for(int i = 0; i < MAXN; i++) vis[i] = 0;
+    for(int i = 0; i < MAXN; i++){
+        if(!vis[i]){
+            c++;
+            dfs(adj, vis, i, c);
+        }
+    }
+
+    int *tamanhos = malloc((c+1) * sizeof(int));
+    for(int i = 0; i < MAXN; i++) tamanhos[i] = 0;
+
+    for(int i = 0; i < MAXN; i++){
+        tamanhos[vis[i]]++;
+    }
+
+    *cor = c;
+    return tamanhos;
+}
+
+void graus(List *adj, int *maior, int *menor, int MAXN){
+    for(int i = 0; i < MAXN; i++){
+        int sz = get_size(&adj[i]);
+
+        *menor = (*menor < sz ? *menor : sz);
+        *maior = (*maior > sz ? *maior : sz);
     }
 }
