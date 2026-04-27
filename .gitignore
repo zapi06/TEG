@@ -1,5 +1,7 @@
 .idea
-
+*~
+*.un~
+*.swp
 # Prerequisites
 *.d
 
