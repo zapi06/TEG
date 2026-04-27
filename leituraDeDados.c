@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "leituraDeDados.h"
 
-int main() {
+void ler_adjacencias(const char *nome_arquivo) {
+    FILE *fptr = fopen(nome_arquivo, "r");
 
-    FILE *fptr = fopen("dados.csv", "r");
     if (fptr == NULL) {
-        return -1;
+        printf("Erro ao abrir o arquivo.\n");
+        return;
     }
 
     int u, v;
