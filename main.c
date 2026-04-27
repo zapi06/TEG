@@ -1,11 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "func.c"
-
-const int MAXN = 100;
+#include "func.h"
+#include "leituraDeDados.h"
 
 int main(){
 
+    int MAXN;
+    List *adj = ler_adjacencias("dados.csv", &MAXN);
+
+    for (int i = 0; i < MAXN; i++) {
+        printf("%d: ", i);
+        mostra(&adj[i]);
+    }
+
+    /*
     List adj[MAXN];
 
     int n; scanf("%d", &n);
@@ -23,5 +31,6 @@ int main(){
         printf("%d: ", i);
         mostra(&adj[i]); 
     }
+    */
 }
 
