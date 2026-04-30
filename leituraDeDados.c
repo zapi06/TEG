@@ -37,8 +37,12 @@ List *ler_adjacencias(const char *nome_arquivo, int *MAXN) {
 
             capacidade = nova_capacidade;
         }
-        push_back(&adj[u], v);
-        push_back(&adj[v], u);
+        if(u != v){
+            push_back(&adj[u], v);
+            push_back(&adj[v], u);
+        }else{
+            push_back(&adj[u], v);
+        }
     }
     *MAXN = capacidade;
     fclose(fptr);

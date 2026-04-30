@@ -99,3 +99,35 @@ void graus(List *adj, int *maior, int *menor, int MAXN){
         *maior = (*maior > sz ? *maior : sz);
     }
 }
+
+int comp(const void *a, const void *b){
+    int *v1 = (int *)a;
+    int *v2 = (int *)b;
+    return v1-v2;
+}
+
+void multigrafo(List *adj, int *lacos, int *multiplas, int MAXN){
+    for(int i = 0; i < MAXN; i++){
+        int sz = get_size(&adj[i]);
+
+        if(!sz) continue;
+
+        int *v = malloc(sz * sizeof(int));
+
+        int j = 0;
+        for(Node *cur = adj[i].head; cur != NULL; cur = cur->next){
+            v[j] = cur->val;
+            j++;
+        }
+
+        qsort(v, sz, sizeof(int), comp);
+
+        int atual = v[0];
+        if(atual == i) *lacos = *lacos + 1;
+
+        for(j = 1; j < sz; j++){
+            if(v[j] == i) *lacos = *lacos + 1;
+            if(v[j] == v[j-1]) *multiplas = *multiplas + 1;
+        }
+    }
+}

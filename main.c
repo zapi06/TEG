@@ -19,6 +19,15 @@ int main(){
 
     printf("maior grau: %d -- menor grau: %d\n", maior, menor);
 
+    int lacos = 0, multiplas = 0;
+
+    multigrafo(adj, &lacos, &multiplas, MAXN);
+
+    if(lacos > 0 || multiplas > 0){
+        printf("Eh multigrafo!\n");
+        printf("Possui %d lacos e %d arestas multiplas\n", lacos, multiplas);
+    }else printf("Nao eh multigrafo!\n");
+
     int cor = 0;
 
     int *tamanhos = conexos(adj, MAXN, &cor);

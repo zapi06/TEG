@@ -20,5 +20,6 @@
     void graus(List *adj, int *menor, int *maior, int MAXN);
     int* conexos(List *adj, int MAXN, int *cor);
     void dfs(List *adj, int vis[], int u, int c);
+    void multigrafo(List *adj, int *lacos, int *multiplas, int MAXN);
 
 #endif //TEG_FUNC_H
