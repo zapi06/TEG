@@ -44,8 +44,15 @@ int main(){
     int *tamanhos = conexos(adj, MAXN, &cor);
 
     printf("O grafo tem %d componentes conexos\n", cor);
+
+    FILE *fptr = fopen("saida_histograma.csv", "w");
+    if (fptr == NULL) {
+        printf("Erro ao abrir o arquivo de sáida.\n");
+    }
+
     for(int i = 1; i <= cor; i++){
         printf("O tamanho do componente %d eh: %d\n", i, tamanhos[i]);
+        fprintf(fptr, "%d,%d\n", i, tamanhos[i]);
     }
 
     printf("\n=======================\n\n");
