@@ -9,9 +9,12 @@ int main(){
     List *adj = ler_adjacencias("dados.csv", &MAXN);
 
     /*
+    printf("\n");
     for (int i = 0; i < MAXN; i++) {
-        printf("%d: ", i);
-        mostra(&adj[i]);
+        if(get_size(&adj[i])){
+            printf("%d: ", i+1);
+            mostra(&adj[i]);
+        }
     }
     */
 
@@ -19,7 +22,11 @@ int main(){
 
     graus(adj, &maior, &menor, MAXN);
 
-    printf("maior grau: %d -- menor grau: %d\n", maior, menor);
+    printf("\n=======================\n\n");
+
+    printf("Maior grau: %d -- Menor grau: %d\n", maior, menor);
+
+    printf("\n=======================\n\n");
 
     int lacos = 0, multiplas = 0;
 
@@ -30,6 +37,8 @@ int main(){
         printf("Possui %d lacos e %d arestas multiplas\n", lacos, multiplas);
     }else printf("Nao eh multigrafo!\n");
 
+    printf("\n=======================\n\n");
+
     int cor = 0;
 
     int *tamanhos = conexos(adj, MAXN, &cor);
@@ -38,6 +47,7 @@ int main(){
     for(int i = 1; i <= cor; i++){
         printf("O tamanho do componente %d eh: %d\n", i, tamanhos[i]);
     }
-    printf("\n");
+
+    printf("\n=======================\n\n");
 }
 

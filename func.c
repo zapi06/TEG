@@ -41,7 +41,7 @@ int get_size(List *l){
 void mostra(List *l){
     Node *it = l->head;
     while(it != NULL){
-        printf("%d ", it->val);
+        printf("%d ", it->val+1);
         it = it->next;
     }
     printf("\n");
