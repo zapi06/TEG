@@ -74,7 +74,7 @@ int* conexos(List *adj, int MAXN, int *cor){
     int vis[MAXN];
     for(int i = 0; i < MAXN; i++) vis[i] = 0;
     for(int i = 0; i < MAXN; i++){
-        if(!vis[i]){
+        if(!vis[i] && get_size(&adj[i])){
             c++;
             dfs(adj, vis, i, c);
         }
